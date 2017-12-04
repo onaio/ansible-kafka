@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Ona Engineering
-  descriptiON: Installs Kafka
+  description: Installs Kafka
   company: Ona Systems Inc
   license: Apache
   min_ansible_version: 1.7
