@@ -10,6 +10,7 @@ kafka_num_network_threads: 2
 kafka_num_io_threads: 2
 kafka_num_partitions: 2
 kafka_port: 9092
+kafka_listen_address: localhost
 kafka_socket_send_buffer_bytes: 1048576
 kafka_socket_receive_buffer_bytes: 1048576
 kafka_socket_request_max_bytes: 104857600
