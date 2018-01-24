@@ -8,8 +8,15 @@
 - name: Uncompress the kafka tar
   unarchive: copy=no creates=/opt/kafka_{{ kafka_version_prefix }}-{{kafka_version}} dest=/opt src="{{ kafka_tarball_location }}/{{ kafka_tarball_name }}"
 
-- name: Link /opt/kafka to the right version
-  file: path=/opt/kafka state=link src=/opt/kafka_{{ kafka_version_prefix }}-{{kafka_version}}
+- name: Set owner and group for unarchived folder
+  file:
+    path: /opt/kafka_{{ kafka_version_prefix }}-{{ kafka_version }}
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"
+    recurse: yes
+
+- name: Link /opt/kafka to the right version and owner
+  file: path=/opt/kafka state=link src=/opt/kafka_{{ kafka_version_prefix }}-{{kafka_version}} owner="{{ kafka_user }}" group="{{ kafka_group }}"
 
 - name: Overwrite the start script so the Java Opts can be changed if Kafka 0.8.1.1
   lineinfile: dest=/opt/kafka_{{ kafka_version_prefix }}-{{kafka_version}}/bin/kafka-server-start.sh regexp="^export KAFKA_HEAP_OPTS=" line="export KAFKA_HEAP_OPTS=\"{{ kafka_heap_opts }}\""
