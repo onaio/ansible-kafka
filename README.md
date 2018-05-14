@@ -21,6 +21,6 @@ Apache
 
 ## Author Information
 
-Modified by [Ona Engineering](ona.io)
+Modified by [Ona Engineering](https://ona.io)
 
 Based on [ansible-kafka](https://github.com/hpcloud-mon/ansible-kafka) by Tim Kuhlman
