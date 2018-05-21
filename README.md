@@ -14,6 +14,7 @@ Installs [kafka](https://kafka.apache.org/)
 - monasca_log_level - Log level to be used for Kafka logs. Defaults to WARN
 - monasca_wait_for_period - The time in seconds for how long to wait for Kafka's port to be available after starting it. Default is 30 seconds.
 - run_mode - One of Deploy, Stop, Install, Start, or Use. The default is Deploy which will do Install, Configure, then Start.
+- set_java_home - Set `JAVA_HOME` env var for systemd/upstart. Default: `False`
 - java_home - `JAVA_HOME` env var. Default: `/usr/local/java`
 
 ## License
