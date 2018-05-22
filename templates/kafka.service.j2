@@ -9,6 +9,9 @@ Group=kafka
 LimitNOFILE=32768
 Restart=on-failure
 Environment="KAFKA_HEAP_OPTS={{ kafka_heap_opts }}"
+{% if set_java_home %}
+Environment="JAVA_HOME={{ java_home }}"
+{% endif %}
 ExecStart=/opt/kafka/bin/kafka-server-start.sh /etc/kafka/server.properties
 
 [Install]

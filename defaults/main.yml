@@ -5,6 +5,8 @@ kafka_version_prefix: 2.11
 kafka_version: 0.10.2.1
 run_mode: Deploy
 skip_install: False
+set_java_home: False
+java_home: /usr/local/java
 
 kafka_num_network_threads: 3
 kafka_num_io_threads: 8
