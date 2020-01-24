@@ -28,6 +28,35 @@ advertised.listeners={{ kafka_advertised_listeners }}
 {% else %}
 #advertised.listeners=localhost
 {% endif %}
+
+# Name of listener used for communication between brokers. If this is unset, the 
+# listener name is defined by security.inter.broker.protocol. It is an error to set
+# this and security.inter.broker.protocol properties at the same time.
+{% if kafka_inter_broker_listener_name is defined %}
+inter.broker.listener.name={{ kafka_inter_broker_listener_name }}
+{% else %}
+#inter.broker.listener.name=
+{% endif %}
+
+# Map between listener names and security protocols. This must be defined for the same 
+# security protocol to be usable in more than one port or IP. For example, internal and
+# external traffic can be separated even if SSL is required for both. Concretely, the 
+# user could define listeners with names INTERNAL and EXTERNAL and this property as: 
+# `INTERNAL:SSL,EXTERNAL:SSL`. As shown, key and value are separated by a colon and map
+# entries are separated by commas. Each listener name should only appear once in the map. 
+#
+# Different security (SSL and SASL) settings can be configured for each listener by 
+# adding a normalised prefix (the listener name is lowercased) to the config name. For 
+# example, to set a different keystore for the INTERNAL listener, a config with name 
+# listener.name.internal.ssl.keystore.location would be set. If the config for the 
+# listener name is not set, the config will fallback to the generic config 
+# (i.e. ssl.keystore.location).
+{% if kafka_listener_security_protocol_map is defined %}
+listener.security.protocol.map={{ kafka_listener_security_protocol_map }}
+{% else %}
+#listener.security.protocol.map=
+{% endif %}
+
 ############################# Socket Server Settings #############################
 
 # The port the socket server listens on
